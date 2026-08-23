@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "text": "I was charged twice for the same order. Please refund the extra payment.",
+    "expected": {
+      "category": "billing",
+      "priority": "high",
+      "sentiment": "negative",
+      "needs_human": true
+    }
+  },
+  {
+    "id": 2,
+    "text": "I forgot my password and cannot log into my account.",
+    "expected": {
+      "category": "account",
+      "priority": "medium",
+      "sentiment": "negative",
+      "needs_human": false
+    }
+  },
+  {
+    "id": 3,
+    "text": "My package has not arrived and the tracking information has not changed for five days.",
+    "expected": {
+      "category": "shipping",
+      "priority": "high",
+      "sentiment": "negative",
+      "needs_human": true
+    }
+  },
+  {
+    "id": 4,
+    "text": "The application crashes every time I try to upload a file.",
+    "expected": {
+      "category": "technical",
+      "priority": "high",
+      "sentiment": "negative",
+      "needs_human": true
+    }
+  },
+  {
+    "id": 5,
+    "text": "Thank you! The new product works perfectly.",
+    "expected": {
+      "category": "product",
+      "priority": "low",
+      "sentiment": "positive",
+      "needs_human": false
+    }
+  },
+  {
+    "id": 6,
+    "text": "I would like to return my order and receive a refund.",
+    "expected": {
+      "category": "refund",
+      "priority": "medium",
+      "sentiment": "neutral",
+      "needs_human": false
+    }
+  },
+  {
+    "id": 7,
+    "text": "This is extremely urgent. My business account has been completely locked and I cannot access any data.",
+    "expected": {
+      "category": "account",
+      "priority": "critical",
+      "sentiment": "negative",
+      "needs_human": true
+    }
+  },
+  {
+    "id": 8,
+    "text": "Can you tell me when my order will be delivered?",
+    "expected": {
+      "category": "shipping",
+      "priority": "low",
+      "sentiment": "neutral",
+      "needs_human": false
+    }
+  },
+  {
+    "id": 9,
+    "text": "The product I received is damaged and does not work.",
+    "expected": {
+      "category": "product",
+      "priority": "high",
+      "sentiment": "negative",
+      "needs_human": true
+    }
+  },
+  {
+    "id": 10,
+    "text": "I cannot connect the application to the server. Please help.",
+    "expected": {
+      "category": "technical",
+      "priority": "medium",
+      "sentiment": "negative",
+      "needs_human": false
+    }
+  }
+]
