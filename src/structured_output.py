@@ -1,122 +1,103 @@
-import json
-import os
+"""
+Reusable Structured Output Module
+VaultX AI Internship - Week 02
 
-from dotenv import load_dotenv
-from google import genai
-from pydantic import ValidationError
+Provides reusable functions for:
+- Customer-support classification
+- Structured field extraction
+- Logging
+- Error handling
+"""
 
-from src.schemas import StructuredResponse
+import logging
+from typing import Any
+
+from src.classifier import classify_message
+from src.extractor import extract_fields
 
 
-load_dotenv()
+# ============================================================
+# LOGGING
+# ============================================================
 
-API_KEY = os.getenv("GEMINI_API_KEY")
+logger = logging.getLogger(__name__)
 
-if not API_KEY:
-    raise ValueError(
-        "GEMINI_API_KEY is not set in the .env file."
+if not logger.handlers:
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s - %(levelname)s - %(message)s",
     )
 
 
-client = genai.Client(api_key=API_KEY)
+# ============================================================
+# CLASSIFICATION
+# ============================================================
 
-MODEL_NAME = "gemini-3.6-flash"
-
-
-def create_prompt(text: str) -> str:
+def classify(text: str) -> dict[str, Any]:
     """
-    Create a prompt that requires strict JSON output.
+    Classify a customer-support message.
+
+    Returns:
+        Dictionary containing:
+        category, priority, sentiment, needs_human.
     """
 
-    return f"""
-You are a customer support classification assistant.
+    if not text or not text.strip():
+        raise ValueError("Input text cannot be empty.")
 
-Analyze the following customer message:
+    try:
+        logger.info("Classifying input text.")
 
-{text}
+        result = classify_message(text)
 
-Return ONLY valid JSON.
+        logger.info("Classification completed successfully.")
 
-The JSON must contain exactly these fields:
+        return result.model_dump()
 
-{{
-    "category": "string",
-    "priority": "low | medium | high | critical",
-    "sentiment": "positive | neutral | negative",
-    "needs_human": true
-}}
-
-Rules:
-
-- Return valid JSON only.
-- Do not use Markdown.
-- Do not include explanations.
-- Do not add extra fields.
-- Do not invent information.
-- needs_human must be true or false.
-""".strip()
+    except Exception as error:
+        logger.error("Classification failed: %s", error)
+        raise
 
 
-def generate_structured_output(
-    text: str,
-    max_retries: int = 3
-) -> StructuredResponse:
+# ============================================================
+# FIELD EXTRACTION
+# ============================================================
 
-    prompt = create_prompt(text)
+def extract(text: str) -> dict[str, Any]:
+    """
+    Extract structured fields from messy text.
 
-    last_error = None
+    Missing fields are handled by the extraction function.
+    """
 
-    for attempt in range(1, max_retries + 1):
+    if not text or not text.strip():
+        raise ValueError("Input text cannot be empty.")
 
-        try:
-            response = client.models.generate_content(
-                model=MODEL_NAME,
-                contents=prompt,
-                config={
-                    "response_mime_type": "application/json"
-                }
-            )
+    try:
+        logger.info("Extracting structured fields.")
 
-            if not response.text:
-                raise ValueError(
-                    "Gemini returned an empty response."
-                )
+        result = extract_fields(text)
 
-            # Parse JSON
-            data = json.loads(response.text)
+        logger.info("Extraction completed successfully.")
 
-            # Validate with Pydantic
-            result = StructuredResponse.model_validate(data)
+        if hasattr(result, "model_dump"):
+            return result.model_dump()
 
-            return result
+        return result
 
-        except (
-            json.JSONDecodeError,
-            ValidationError,
-            ValueError
-        ) as error:
+    except Exception as error:
+        logger.error("Extraction failed: %s", error)
+        raise
 
-            last_error = error
 
-            print(
-                f"Attempt {attempt}/{max_retries} failed: "
-                f"{error}"
-            )
-
-    raise RuntimeError(
-        f"Structured output failed after "
-        f"{max_retries} attempts."
-    ) from last_error
-
+# ============================================================
+# MODULE TEST
+# ============================================================
 
 if __name__ == "__main__":
 
-    message = (
-        "My payment was deducted twice and "
-        "I need someone to fix this immediately."
-    )
-
-    result = generate_structured_output(message)
-
-    print("\nValidated result:")
-    print(result.model_dump_json(indent=2))
+    print("Structured Output Module")
+    print("------------------------")
+    print("Available functions:")
+    print("- classify(text)")
+    print("- extract(text)")
