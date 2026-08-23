@@ -1,6 +1,5 @@
 """
 Reusable Prompt Template Library
-VaultX AI Internship - Week 02
 
 This module contains reusable templates for common LLM prompting
 patterns:

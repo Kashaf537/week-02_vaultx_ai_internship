@@ -8,7 +8,7 @@ from src.classifier import classify_message
 DATA_FILE = (
     Path(__file__).parent.parent
     / "eval"
-    / "classification_samples.json"
+    / "classifier_test_samples.json"
 )
 
 OUTPUT_FILE = (

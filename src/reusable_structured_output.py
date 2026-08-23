@@ -1,6 +1,5 @@
 """
 Reusable Structured Output Module
-VaultX AI Internship - Week 02
 
 Provides reusable functions for:
 - Customer-support classification
