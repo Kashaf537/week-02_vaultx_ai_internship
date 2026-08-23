@@ -1,0 +1,142 @@
+[
+  {
+    "text": "My credit card was charged twice for the same order.",
+    "category": "billing",
+    "priority": "high",
+    "sentiment": "negative",
+    "needs_human": true
+  },
+  {
+    "text": "I forgot my password and cannot log into my account.",
+    "category": "account",
+    "priority": "medium",
+    "sentiment": "negative",
+    "needs_human": false
+  },
+  {
+    "text": "The website keeps showing an error when I try to checkout.",
+    "category": "technical",
+    "priority": "high",
+    "sentiment": "negative",
+    "needs_human": true
+  },
+  {
+    "text": "When will my order be delivered?",
+    "category": "shipping",
+    "priority": "low",
+    "sentiment": "neutral",
+    "needs_human": false
+  },
+  {
+    "text": "The headphones I received are broken.",
+    "category": "product",
+    "priority": "high",
+    "sentiment": "negative",
+    "needs_human": true
+  },
+  {
+    "text": "I would like to return my order and get a refund.",
+    "category": "refund",
+    "priority": "medium",
+    "sentiment": "neutral",
+    "needs_human": false
+  },
+  {
+    "text": "Thank you, my issue was resolved quickly.",
+    "category": "other",
+    "priority": "low",
+    "sentiment": "positive",
+    "needs_human": false
+  },
+  {
+    "text": "My account has been locked after several login attempts.",
+    "category": "account",
+    "priority": "high",
+    "sentiment": "negative",
+    "needs_human": true
+  },
+  {
+    "text": "The payment page is not loading.",
+    "category": "technical",
+    "priority": "high",
+    "sentiment": "negative",
+    "needs_human": true
+  },
+  {
+    "text": "Can you tell me where my package is?",
+    "category": "shipping",
+    "priority": "medium",
+    "sentiment": "neutral",
+    "needs_human": false
+  },
+  {
+    "text": "The shirt I ordered is the wrong size.",
+    "category": "product",
+    "priority": "medium",
+    "sentiment": "negative",
+    "needs_human": false
+  },
+  {
+    "text": "I was charged a fee that I don't understand.",
+    "category": "billing",
+    "priority": "medium",
+    "sentiment": "negative",
+    "needs_human": true
+  },
+  {
+    "text": "I need a refund because I accidentally placed this order.",
+    "category": "refund",
+    "priority": "medium",
+    "sentiment": "neutral",
+    "needs_human": false
+  },
+  {
+    "text": "My order has not arrived and it was supposed to arrive yesterday.",
+    "category": "shipping",
+    "priority": "high",
+    "sentiment": "negative",
+    "needs_human": true
+  },
+  {
+    "text": "The mobile app crashes every time I open it.",
+    "category": "technical",
+    "priority": "high",
+    "sentiment": "negative",
+    "needs_human": true
+  },
+  {
+    "text": "I want to change the email address associated with my account.",
+    "category": "account",
+    "priority": "low",
+    "sentiment": "neutral",
+    "needs_human": false
+  },
+  {
+    "text": "The product quality is excellent. I am very happy with it.",
+    "category": "product",
+    "priority": "low",
+    "sentiment": "positive",
+    "needs_human": false
+  },
+  {
+    "text": "Please refund the amount for my cancelled order.",
+    "category": "refund",
+    "priority": "medium",
+    "sentiment": "neutral",
+    "needs_human": false
+  },
+  {
+    "text": "My card payment was declined even though I have sufficient funds.",
+    "category": "billing",
+    "priority": "high",
+    "sentiment": "negative",
+    "needs_human": true
+  },
+  {
+    "text": "I have a general question about your service.",
+    "category": "other",
+    "priority": "low",
+    "sentiment": "neutral",
+    "needs_human": false
+  }
+]
