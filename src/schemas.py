@@ -32,3 +32,14 @@ class ClassificationResult(BaseModel):
     needs_human: bool = Field(
         description="Whether the issue requires human intervention."
     )
+
+
+class ExtractionResult(BaseModel):
+    """Validated fields extracted from messy text."""
+
+    name: str | None = None
+    email: str | None = None
+    invoice_number: str | None = None
+    date: str | None = None
+    total_amount: float | None = None
+    currency: str | None = None
